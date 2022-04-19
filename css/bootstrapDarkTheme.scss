@@ -1,0 +1,60 @@
+.dropdown-item:hover
+{
+    background-color: rgba(var(--bs-primary-rgb), .8)!important;
+}
+
+@mixin lightTheme
+{
+    .bg-white
+    {
+        background-color: rgba(var(--bs-white-rgb),var(--bs-bg-opacity))!important;
+    }
+
+    .bg-light
+    {
+        background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity))!important;
+    }
+
+    .text-dark
+    {
+        color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity))!important;
+    }
+}
+
+@mixin darkTheme
+{
+    .bg-white
+    {
+        background-color: #121212 !important;
+    }
+
+    .bg-light
+    {
+        background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity))!important;
+    }
+
+    .text-dark
+    {
+        color: rgba(var(--bs-light-rgb),var(--bs-text-opacity))!important;
+    }
+}
+
+@media(prefers-color-scheme: light)
+{
+    @include lightTheme;
+}
+
+[color-scheme="light"]
+{
+    @include lightTheme;
+}
+
+@media(prefers-color-scheme: dark)
+{
+    @include darkTheme;
+}
+
+[color-scheme="dark"]
+{
+    @include darkTheme;
+}
