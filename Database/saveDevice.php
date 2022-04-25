@@ -12,7 +12,7 @@ if($formData->id === "")
 
     try
     {
-        $result = mysqli_query($dbConnection, $query);
+        mysqli_query($dbConnection, $query);
         echo json_encode(["message" => "Device inserted Successfully.", "id" => mysqli_insert_id($dbConnection)]);
     }
     catch(Exception $e)
@@ -22,7 +22,17 @@ if($formData->id === "")
 }
 else
 {
-    echo json_encode(["message" => "Update Record"]);
+    $query = "UPDATE devices SET name='$formData->deviceName', deviceId='$formData->deviceID', description='$formData->deviceDescription' WHERE id='$formData->id'";
+
+    try
+    {
+        mysqli_query($dbConnection, $query);
+        echo json_encode(["message" => "Device Updated Successfully.", $formData]);
+    }
+    catch(Exception $e)
+    {
+        echo json_encode(["message" => "Device Updating failed.", "error" => $e]);
+    }
 }
 
 $dbConnection->close();
