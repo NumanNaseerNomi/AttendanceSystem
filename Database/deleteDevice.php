@@ -1,10 +1,10 @@
 <?php
 require "dbConnection.php";
 
+header('Content-type: application/json');
+
 $dataJson = file_get_contents('php://input');
 $id       = json_decode($dataJson);
-
-header('Content-type: application/json');
 
 $query = "DELETE FROM devices WHERE id='$id'";
 
