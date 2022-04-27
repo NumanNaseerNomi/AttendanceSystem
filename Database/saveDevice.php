@@ -4,7 +4,7 @@ require "dbConnection.php";
 header('Content-type: application/json');
 
 $formDataJson   = file_get_contents('php://input');
-$formData       =  json_decode($formDataJson);
+$formData       = json_decode($formDataJson);
 
 if($formData->id === "")
 {
