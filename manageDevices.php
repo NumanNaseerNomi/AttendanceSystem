@@ -25,6 +25,7 @@
 									<input type="text" class="form-control bg-white text-dark" id="deviceDescription" name="deviceDescription">
 								</div>
 								<div class="d-grid gap-2">
+									<button type="reset" class="btn btn-secondary btn-sm">Reset</button>
 									<button type="submit" class="btn btn-primary btn-sm">Save</button>
 								</div>
 							</form>
