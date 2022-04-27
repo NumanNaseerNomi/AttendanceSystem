@@ -72,7 +72,7 @@
 	
 	function fetchDevicesList()
 	{
-		fetch('Database/getDevices.php')
+		fetch('Database/devices/getDevices.php')
 		.then((response) => response.json())
 		.then((respondedJsonData) =>
 		{
@@ -122,7 +122,7 @@
 			}
 		}
 		
-		fetch('Database/saveDevice.php',
+		fetch('Database/devices/saveDevice.php',
 		{
 			method	: 'POST',
 			headers	: {'Content-Type': 'application/json'},
@@ -143,7 +143,7 @@
 <script>
 	function editDevice(id)
 	{
-		fetch('Database/getDevice.php',
+		fetch('Database/devices/getDevice.php',
 		{
 			method	: 'POST',
 			headers	: {'Content-Type': 'application/json'},
@@ -169,7 +169,7 @@
 
 		if(confirm(alertText) == true)
 		{
-			fetch('Database/deleteDevice.php',
+			fetch('Database/devices/deleteDevice.php',
 			{
 				method	: 'POST',
 				headers	: {'Content-Type': 'application/json'},

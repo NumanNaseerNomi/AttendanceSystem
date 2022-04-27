@@ -1,5 +1,5 @@
 <?php
-require "dbConnection.php";
+require "../dbConnection.php";
 
 header('Content-type: application/json');
 
