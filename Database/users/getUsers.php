@@ -3,7 +3,7 @@ require "../dbConnection.php";
 
 header('Content-type: application/json');
 
-$query = "SELECT * FROM Devices";
+$query = "SELECT id, name, about, cardId, username, isAdmin FROM Users WHERE isAdmin = 0";
 
 try
 {

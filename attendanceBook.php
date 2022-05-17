@@ -48,7 +48,7 @@
 						<div class="card-header"><h5>Attendance Book</h5></div>
 						<div class="container-fluid">
 							<div class="card-body table-responsive">
-								<table class="table table-bordered bg-light text-dark align-middle text-nowrap">
+								<table class="table table-bordered table-sm bg-light text-dark align-middle text-nowrap">
 									<thead class="align-middle">
 										<tr>
 											<th scope="col">#</th>
@@ -60,8 +60,8 @@
 											<th scope="col">TIME OUT</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
+									<tbody id="attendanceBookTable">
+										<!-- <tr>
 											<td>1</td>
 											<td>Numan Naseer</td>
 											<td>A3481CC</td>
@@ -69,7 +69,7 @@
 											<td>19-4-2022</td>
 											<td>10:15:00</td>
 											<td>19:00:15</td>
-										</tr>
+										</tr> -->
 									</tbody>
 								</table>
 							</dav>
@@ -81,3 +81,63 @@
 		<?php require "components/footer.php"; ?>
 	</body>
 </html>
+<script>
+	// function plotAttendanceTable(srNumber, userName, cardId, aboutUser, date, timeIn, timeOut)
+	// {
+	// 	let tableRef = document.getElementById("attendanceBookTable");
+  	// 	let row = tableRef.insertRow(-1);
+	// 	row.insertCell(0).innerHTML = srNumber;
+	// 	row.insertCell(1).innerHTML = userName;
+	// 	row.insertCell(2).innerHTML = cardId;
+	// 	row.insertCell(3).innerHTML = aboutUser;
+	// 	row.insertCell(4).innerHTML = date;
+	// 	row.insertCell(5).innerHTML = timeIn;
+	// 	row.insertCell(5).innerHTML = timeOut;
+	// }
+
+	// fetch('https://jsonplaceholder.typicode.com/users')
+	// .then((response) => response.json())
+	// .then((json) =>
+	// {
+	// 	// console.log(json);
+	// 	for (let i = 0; i < json.length; i++)
+	// 	{
+	// 		plotAttendanceTable(json[i].id, json[i].name, json[i].phone, json[i].website, "19-4-2022", "10:15:00", "19:00:15");
+	// 	}
+	// });
+</script>
+<script>
+	function plotAttendanceTable(config)
+	{
+		// let tableRef = document.getElementById("attendanceBookTable");
+  		let row = document.getElementById("attendanceBookTable").insertRow(-1);
+		row.insertCell(0).innerHTML = config.srNumber;
+		row.insertCell(1).innerHTML = config.userName;
+		row.insertCell(2).innerHTML = config.cardId;
+		row.insertCell(3).innerHTML = config.aboutUser;
+		row.insertCell(4).innerHTML = config.date;
+		row.insertCell(5).innerHTML = config.timeIn;
+		row.insertCell(5).innerHTML = config.timeOut;
+	}
+	
+	fetch('https://jsonplaceholder.typicode.com/users')
+	.then((response) => response.json())
+	.then((respondedJsonData) =>
+	{
+		for (let i = 0; i < respondedJsonData.length; i++)
+		{
+			let dataConfig =
+			{
+				srNumber 	: respondedJsonData[i].id,
+				userName 	: respondedJsonData[i].name,
+				cardId 		: respondedJsonData[i].phone,
+				aboutUser 	: respondedJsonData[i].website,
+				date 		: "19-4-2022",
+				timeIn 		: "10:15:00",
+				timeOut 	: "19:00:15"
+			};
+			
+			plotAttendanceTable(dataConfig);
+		}
+	});
+</script>
